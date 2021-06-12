@@ -1,8 +1,11 @@
 #ifndef FLAPPY_GAME_H
 #define FLAPPY_GAME_H
 
+#include <vector>
+
 #include "game_commons.h"
-#include "renderer/Renderer.h"
+#include "actor/actor.h"
+#include "player/player.h"
 
 using namespace sf;
 
@@ -14,10 +17,14 @@ private:
     RenderWindow* window_;
     Event window_event;
     //////////////////////
-    Renderer* renderer_;
+    Player* player;
+    std::vector<Actor*> actors = std::vector<Actor*>();
     //////////////////////
     void Run();
     void PollEvents();
+    void Update();
+    void Render();
+    //////////////////////
     bool IsWindowOpen() const { return window_->isOpen(); }
     bool ShouldPollEvents() { return window_->pollEvent(window_event); }
     //////////////////////
@@ -30,7 +37,6 @@ public:
     void Stop();
 
     RenderWindow* window() { return window_; }
-    Renderer* renderer() { return renderer_; }
 
 };
 
