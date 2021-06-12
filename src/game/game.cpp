@@ -4,9 +4,11 @@
 
 Game::Game() {
 
-    this->video_mode = VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
+    this->video_mode = VideoMode( WINDOW_WIDTH, WINDOW_HEIGHT );
     this->window_ = new RenderWindow( video_mode, WINDOW_TITLE, Style::Titlebar | Style::Close );
-    this->renderer_ = new Renderer(window_);
+
+    player = new Player("player.png", 2.5f, 0.f);
+    actors.push_back(player);
 
 }
 
@@ -25,7 +27,9 @@ void Game::Run() {
         while (ShouldPollEvents())
             PollEvents();
 
-        renderer_->Render();
+        this->Update();
+        this->Render();
+
     }
 
 }
@@ -46,6 +50,26 @@ void Game::PollEvents() {
                 Stop();
             break;
     }
+}
+
+// update before rendering
+void Game::Update() {
+
+    for(auto actor : actors){
+
+    }
+
+}
+
+void Game::Render() {
+
+    window_->display();
+
+    for(auto actor : actors){
+//        window_->draw(actor->sprite());
+        window_->draw(player->shape);
+    }
+
 }
 
 
