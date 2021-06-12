@@ -6,8 +6,8 @@ project(Flappy)
 # set(SFML_STATIC_LIBRARIES TRUE)
 
 ## In most cases better set in the CMake cache
-set(SFML_DIR "C:/Program Files/SFML/lib/cmake/SFML")
+set(SFML_DIR "C:/Program Files/SFML/lib/cmake/SFML-VC")
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
-add_executable(Flappy src/main.cpp src/game/game.cpp src/game/game.h src/game/game_commons.h src/game/renderer/Renderer.cpp src/game/renderer/Renderer.h)
+add_executable(Flappy src/main.cpp src/game/game.cpp src/game/game.h src/game/game_commons.h src/game/actor/actor.cpp src/game/actor/actor.h src/game/player/player.cpp src/game/player/player.h)
 target_link_libraries(Flappy sfml-graphics sfml-audio)
