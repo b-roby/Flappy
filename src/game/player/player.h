@@ -7,7 +7,7 @@ class Player : public Actor {
 
 public:
 
-    Player(sf::String const& textureFileName, float x_velocity, float y_velocity);
+    Player(sf::String const& textureFileName, float x_velocity, float y_velocity, bool should_tick);
 
     void Tick() override;
 
